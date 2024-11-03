@@ -3,7 +3,7 @@ description: Gets dependencies(or reuses from cache, if exists)
 outputs:
   cache-hit:
     description: Cache hit output from actions/cache
-    value: ${{steps.cache-step.outputs.cache-hit}}
+    value: ${{ steps.cache-step.outputs.cache-hit != '' }}
 runs:
   using: 'composite'
   steps:
