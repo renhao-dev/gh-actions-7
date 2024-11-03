@@ -10,6 +10,6 @@ runs:
         path: node_modules
         key: node_deps_${{ hashFiles('**/package-lock.json') }}
     - name: Get deps
-      if: steps.cache-step.outputs.cache-hit == 'false'
+      if: steps.cache-step.outputs.cache-hit != 'true'
       run: npm ci
       shell: bash
