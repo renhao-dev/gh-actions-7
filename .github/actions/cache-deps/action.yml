@@ -1,7 +1,7 @@
 name: Get and cache dependencies
 description: Gets dependencies(or reuses from cache, if exists)
 runs:
-  uses: composite
+  using: 'composite'
   steps:
     - name: Cache deps
       id: cache-step
