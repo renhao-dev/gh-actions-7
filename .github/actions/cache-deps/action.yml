@@ -1,0 +1,15 @@
+name: Get and cache dependencies
+description: Gets dependencies(or reuses from cache, if exists)
+runs:
+  uses: composite
+  steps:
+    - name: Cache deps
+      id: cache-step
+      uses: actions/cache@v4
+      with:
+        path: node_modules
+        key: node_deps_${{ hashFiles('**/package-lock.json') }}
+    - name: Get deps
+      if: steps.cache-step.outputs.cache-hit == 'false'
+      run: npm ci
+      shell: bash
