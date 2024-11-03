@@ -1,5 +1,9 @@
 name: Get and cache dependencies
 description: Gets dependencies(or reuses from cache, if exists)
+outputs:
+  cache-hit:
+    description: Cache hit output from actions/cache
+    value: ${{cache-step.outputs.cache-hit}}
 runs:
   using: 'composite'
   steps:
