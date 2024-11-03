@@ -21,6 +21,8 @@ jobs:
       - name: Get deps
         id: deps-step
         uses: ./.github/actions/cache-deps
+        with:
+          use-cache: false
       - name: Report cache usage
         run: echo 'Cache used? ${{ steps.deps-step.outputs.cache-hit }}'
       - name: Test code

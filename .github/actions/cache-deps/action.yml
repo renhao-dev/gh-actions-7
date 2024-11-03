@@ -1,5 +1,10 @@
 name: Get and cache dependencies
 description: Gets dependencies(or reuses from cache, if exists)
+inputs:
+  use-cache:
+    desciption: To use cache or not(true or false as string)
+    default: true
+    type: string
 outputs:
   cache-hit:
     description: Cache hit output from actions/cache
@@ -9,12 +14,13 @@ runs:
   steps:
     - name: Cache deps
       id: cache-step
+      if: inputs.use-cache == 'true'
       uses: actions/cache@v4
       with:
         path: node_modules
         key: node_deps_${{ hashFiles('**/package-lock.json') }}
     - name: Get deps
-      if: steps.cache-step.outputs.cache-hit != 'true'
+      if: steps.cache-step.outputs.cache-hit != 'true' || inputs.use-cache == 'false'
       run: npm ci
       shell: bash
 
