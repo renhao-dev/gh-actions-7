@@ -26,8 +26,8 @@ async function run() {
             }
         }
     );*/
-    await exec.exec(`CLOUDFLARE_ACCOUNT_ID=${accountID}`);
-    await exec.exec(`CLOUDFLARE_API_TOKEN=${apiToken}`);
+    await exec.exec(`export CLOUDFLARE_ACCOUNT_ID=${accountID}`);
+    await exec.exec(`export CLOUDFLARE_API_TOKEN=${apiToken}`);
     await exec.exec('echo $CLOUDFLARE_ACCOUNT_ID');
     await exec.exec('echo $CLOUDFLARE_API_TOKEN');
 
