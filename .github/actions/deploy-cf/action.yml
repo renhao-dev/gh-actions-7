@@ -14,9 +14,6 @@ inputs:
     description: Directory with deployable files
     required: false
     default: dist
-env:
-  CLOUDFLARE_ACCOUNT_ID: ${{ inputs.accountID }}
-  CLOUDFLARE_API_TOKEN: ${{ inputs.apiToken }}
 runs:
   using: 'node16'
   main: 'main.js'
