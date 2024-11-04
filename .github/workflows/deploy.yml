@@ -60,8 +60,6 @@ jobs:
           path: ./dist
       - name: Output contents
         run: ls
-      - name: Deploy site
-        run: echo "Deploying..."
       - name: Deploy to CF pages
         uses: ./.github/actions/deploy-cf
         with:

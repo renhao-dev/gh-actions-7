@@ -3,8 +3,6 @@ const exec = require('@actions/exec');
 const github = require('@actions/github');
 
 async function run() {
-    core.notice('Hello from js action!!!');
-
     const dir = core.getInput('deployableDir');
     const projectName = core.getInput('projectName');
 
