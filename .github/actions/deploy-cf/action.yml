@@ -1,0 +1,5 @@
+name: Deploy to CF
+description: 'Deploy to CloudFlare'
+runs:
+  using: 'node16'
+  main: 'main.js'
