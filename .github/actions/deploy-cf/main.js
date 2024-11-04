@@ -1,6 +1,6 @@
-const core = import('@actions/core');
-const exec = import('@actions/exec');
-const github = import('@actions/github');
+const core = require('@actions/core');
+const exec = require('@actions/exec');
+const github = require('@actions/github');
 
 function run() {
     core.notice('Hello from js action!!!');
