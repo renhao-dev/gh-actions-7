@@ -11,7 +11,7 @@ async function run() {
     const apiToken = core.getInput('apiToken');
     const accountID = core.getInput('accountID');
     await exec.exec('sudo apt install nodejs');
-    await exec.exec('npm install -g npm');
+    await exec.exec('sudo npm install -g npm');
     //await exec.exec('ln -s /usr/bin/nodejs /usr/local/bin/node');
     await exec.exec('npm install wrangler -y');
     //exec.exec(`echo "CLOUDFLARE_ACCOUNT_ID=${accountID}" >> $GITHUB_ENV`);
