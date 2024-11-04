@@ -27,7 +27,7 @@ function run() {
     exec.exec('echo $CLOUDFLARE_ACCOUNT_ID');
     exec.exec('echo $CLOUDFLARE_API_TOKEN');
 
-    exec.exec(`bash -c 'npx wrangler pages deploy ${dir} --project-name ${projectName}'`);
+    exec.exec(`npx wrangler pages deploy ${dir} --project-name ${projectName}`);
 }
 
 run();
