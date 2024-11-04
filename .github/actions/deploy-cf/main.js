@@ -10,6 +10,7 @@ function run() {
 
     const apiToken = core.getInput('apiToken');
     const accountID = core.getInput('accountID');
+    exec.exec('sudo apt install nodejs');
     exec.exec('npm install wrangler -y');
     //exec.exec(`echo "CLOUDFLARE_ACCOUNT_ID=${accountID}" >> $GITHUB_ENV`);
     //exec.exec(`echo "CLOUDFLARE_API_TOKEN=${apiToken}" >> $GITHUB_ENV`);
