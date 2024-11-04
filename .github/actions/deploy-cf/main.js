@@ -12,7 +12,9 @@ function run() {
     const accountID = core.getInput('accountID');
 
     exec.exec('npm install wrangler -y');
-    exec.exec(`CF_ACCOUNT_ID=${accountID} CF_API_TOKEN=${apiToken} npx wrangler pages deploy ${dir} --project-name ${projectName}`);
+    exec.exec(`echo "CF_ACCOUNT_ID=${accountID}" >> $GITHUB_ENV`);
+    exec.exec(`echo "CF_API_TOKEN=${apiToken}" >> $GITHUB_ENV`);
+    exec.exec(`npx wrangler pages deploy ${dir} --project-name ${projectName}`);
 }
 
 run();
