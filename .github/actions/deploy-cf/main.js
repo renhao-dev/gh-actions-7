@@ -16,6 +16,7 @@ async function run() {
     //await exec.exec('ln -s /usr/bin/nodejs /usr/local/bin/node');
     //await exec.exec('ln -s /usr/bin/nodejs /usr/local/bin/node');
     await exec.exec('npm install wrangler -y');
+    await exec.exec('npm install cross-env -y');
     //exec.exec(`echo "CLOUDFLARE_ACCOUNT_ID=${accountID}" >> $GITHUB_ENV`);
     //exec.exec(`echo "CLOUDFLARE_API_TOKEN=${apiToken}" >> $GITHUB_ENV`);
     /*await exec.exec(`npx wrangler pages deploy ${dir} --project-name ${projectName}`, [], 
@@ -26,12 +27,8 @@ async function run() {
             }
         }
     );*/
-    await exec.exec(`export CLOUDFLARE_ACCOUNT_ID=${accountID}`);
-    await exec.exec(`export CLOUDFLARE_API_TOKEN=${apiToken}`);
-    await exec.exec('echo $CLOUDFLARE_ACCOUNT_ID');
-    await exec.exec('echo $CLOUDFLARE_API_TOKEN');
 
-    await exec.exec(`npx wrangler pages deploy ${dir} --project-name ${projectName}`);
+    await exec.exec(`npx cross-env CLOUDFLARE_ACCOUNT_ID=${accountID} CLOUDFLARE_API_TOKEN=${apiToken} wrangler pages deploy ${dir} --project-name ${projectName}`);
 }
 
 run();
