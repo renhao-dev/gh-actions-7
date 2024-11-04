@@ -2,7 +2,7 @@ const core = require('@actions/core');
 const exec = require('@actions/exec');
 const github = require('@actions/github');
 
-function run() {
+async function run() {
     core.notice('Hello from js action!!!');
 
     const dir = core.getInput('deployableDir');
@@ -10,12 +10,12 @@ function run() {
 
     const apiToken = core.getInput('apiToken');
     const accountID = core.getInput('accountID');
-    exec.exec('sudo apt install nodejs');
-    exec.exec('ln -s /usr/bin/nodejs /usr/local/bin/node');
-    exec.exec('npm install wrangler -y');
+    await exec.exec('sudo apt install nodejs');
+    //await exec.exec('ln -s /usr/bin/nodejs /usr/local/bin/node');
+    await exec.exec('npm install wrangler -y');
     //exec.exec(`echo "CLOUDFLARE_ACCOUNT_ID=${accountID}" >> $GITHUB_ENV`);
     //exec.exec(`echo "CLOUDFLARE_API_TOKEN=${apiToken}" >> $GITHUB_ENV`);
-    exec.exec(`npx wrangler pages deploy ${dir} --project-name ${projectName}`, [], 
+    await exec.exec(`npx wrangler pages deploy ${dir} --project-name ${projectName}`, [], 
         {
             env:{
                 "CLOUDFLARE_ACCOUNT_ID": accountID,
