@@ -22,7 +22,12 @@ function run() {
             }
         }
     );*/
-    exec.exec(`CLOUDFLARE_ACCOUNT_ID=${accountID} CLOUDFLARE_API_TOKEN=${apiToken} bash -c 'npx wrangler pages deploy ${dir} --project-name ${projectName}'`);
+    exec.exec(`CLOUDFLARE_ACCOUNT_ID=${accountID}`);
+    exec.exec(`CLOUDFLARE_API_TOKEN=${apiToken}`);
+    exex.exec('echo $CLOUDFLARE_ACCOUNT_ID');
+    exex.exec('echo $CLOUDFLARE_API_TOKEN');
+
+    exec.exec(`bash -c 'npx wrangler pages deploy ${dir} --project-name ${projectName}'`);
 }
 
 run();
